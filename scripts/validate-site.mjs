@@ -10,6 +10,8 @@ const requiredFiles = [
   "js/projects.js",
   "assets/mohith-dharshan.jpg",
   "assets/Mohith_Dharshan_Resume.pdf",
+  "assets/favicon.svg",
+  "site.webmanifest",
   "vercel.json"
 ];
 
