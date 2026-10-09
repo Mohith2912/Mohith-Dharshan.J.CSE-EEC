@@ -333,6 +333,9 @@ html[data-theme="light"] .theme-icon-moon { display: block; }
 .highlight-card h3 { margin: 0 0 1rem; font-size: clamp(1.45rem, 2.2vw, 2rem); line-height: 1.08; }
 .highlight-card p:not(.highlight-meta) { color: var(--muted); font-size: .92rem; }
 .highlight-card .highlight-source { margin-top: auto; }
+@media (min-width: 1081px) {
+  .highlight-grid .highlight-card:nth-child(5):last-child { grid-column: 2 / span 2; }
+}
 .venture-highlight { display: grid; grid-template-columns: minmax(280px, .8fr) minmax(0, 1.2fr); gap: clamp(1.5rem, 4vw, 4rem); align-items: center; margin-top: 1rem; padding: clamp(1.25rem, 3vw, 2.5rem); border: 1px solid var(--line); background: linear-gradient(135deg, rgba(239,61,70,.08), rgba(255,255,255,.018)); }
 .venture-highlight figure { aspect-ratio: 16 / 9; margin: 0; overflow: hidden; border: 1px solid var(--line); background: var(--panel); }
 .venture-highlight img { width: 100%; height: 100%; object-fit: cover; }
