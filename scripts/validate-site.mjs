@@ -28,6 +28,10 @@ for (const score of ["8.53", "9.16", "8.85"]) {
   if (!html.includes(score)) throw new Error(`Missing academic score: ${score}`);
 }
 
+if (!html.includes('href="tel:+917845122655"')) {
+  throw new Error("Missing clickable contact phone number");
+}
+
 const context = { window: {} };
 vm.createContext(context);
 vm.runInContext(readFileSync(resolve(root, "js/projects.js"), "utf8"), context);
