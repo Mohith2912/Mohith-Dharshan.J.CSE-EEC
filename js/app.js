@@ -11,7 +11,28 @@
   const dialogContent = document.querySelector("#dialog-content");
   const menuButton = document.querySelector(".menu-button");
   const navigation = document.querySelector("#primary-navigation");
+  const themeToggle = document.querySelector(".theme-toggle");
+  const themeToggleLabel = themeToggle.querySelector(".theme-toggle-label");
+  const themeColor = document.querySelector('meta[name="theme-color"]');
+  const systemTheme = window.matchMedia("(prefers-color-scheme: light)");
   let activeCategory = "all";
+
+  function savedTheme() {
+    try { return localStorage.getItem("mohith-portfolio-theme"); }
+    catch (_) { return null; }
+  }
+
+  function applyTheme(theme, persist = false) {
+    const nextTheme = theme === "light" ? "light" : "dark";
+    document.documentElement.dataset.theme = nextTheme;
+    themeColor.setAttribute("content", nextTheme === "light" ? "#f7f3f4" : "#090709");
+    const targetTheme = nextTheme === "light" ? "dark" : "light";
+    themeToggle.setAttribute("aria-label", `Switch to ${targetTheme} mode`);
+    themeToggleLabel.textContent = `${targetTheme[0].toUpperCase()}${targetTheme.slice(1)} mode`;
+    if (persist) {
+      try { localStorage.setItem("mohith-portfolio-theme", nextTheme); } catch (_) {}
+    }
+  }
 
   const arrowIcon = `
     <svg aria-hidden="true" viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.8">
@@ -154,6 +175,15 @@
   renderRepositories();
   observeReveals();
   document.querySelector("#year").textContent = new Date().getFullYear();
+  applyTheme(document.documentElement.dataset.theme || (systemTheme.matches ? "light" : "dark"));
+
+  themeToggle.addEventListener("click", () => {
+    const nextTheme = document.documentElement.dataset.theme === "light" ? "dark" : "light";
+    applyTheme(nextTheme, true);
+  });
+  systemTheme.addEventListener("change", (event) => {
+    if (!savedTheme()) applyTheme(event.matches ? "light" : "dark");
+  });
 
   featuredRoot.addEventListener("click", (event) => {
     const button = event.target.closest("[data-project]");

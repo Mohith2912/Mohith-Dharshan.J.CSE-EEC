@@ -34,6 +34,10 @@ if (!html.includes('href="tel:+917845122655"')) {
   throw new Error("Missing clickable contact phone number");
 }
 
+if (!html.includes('class="theme-toggle"') || !html.includes('mohith-portfolio-theme')) {
+  throw new Error("Responsive light/dark theme controls are missing");
+}
+
 for (const resume of ["Mohith_Dharshan_Resume_Original.pdf", "Mohith_Dharshan_Resume.pdf"]) {
   const resumeHref = `assets/${resume}`;
   if (!html.includes(`href="${resumeHref}" target="_blank"`)) {
@@ -77,6 +81,9 @@ for (const [id, expectedUrl] of expectedLiveProjects) {
 }
 
 const appSource = readFileSync(resolve(root, "js/app.js"), "utf8");
+if (!appSource.includes('systemTheme.addEventListener("change"') || !appSource.includes("applyTheme(nextTheme, true)")) {
+  throw new Error("Theme switching must follow the system and persist a manual choice");
+}
 if (!appSource.includes('data-live-project="${project.id}"')) {
   throw new Error("Live project links are missing their navigation marker");
 }

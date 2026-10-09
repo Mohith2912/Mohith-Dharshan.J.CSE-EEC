@@ -10,6 +10,7 @@ A cinematic, content-first portfolio for Mohith Dharshan J, a Computer Science a
 - A hero résumé library with a comprehensive two-page résumé and a polished one-page edition, each with separate view and download actions.
 - Resume-backed experience, education, skills, and contact information.
 - Responsive, keyboard-friendly, reduced-motion-aware interactions.
+- Adaptive light and dark themes that follow the system and remember a visitor's choice.
 - Static architecture for fast, reliable Vercel deployment.
 
 ## Local preview
