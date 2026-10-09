@@ -1,0 +1,12 @@
+{
+  "name": "Mohith Dharshan J - Portfolio",
+  "short_name": "Mohith Dharshan",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#090709",
+  "theme_color": "#090709",
+  "icons": [
+    { "src": "/assets/favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
+
