@@ -20,7 +20,7 @@
 
   function featuredCard(project, position) {
     const liveLink = project.live
-      ? `<a href="${project.live}" data-live-project="${project.id}" aria-label="View ${project.title} live project">Live site</a>`
+      ? `<a href="${project.live}" target="_blank" rel="noopener noreferrer" data-live-project="${project.id}" aria-label="View ${project.title} live project in a new tab">Live site</a>`
       : `<span>Case study</span>`;
 
     return `
@@ -62,7 +62,7 @@
       </div>
       <div class="dialog-actions">
         <a class="button button-primary" href="${project.source}" target="_blank" rel="noreferrer">View source</a>
-        ${project.live ? `<a class="button button-secondary" href="${project.live}" data-live-project="${project.id}">Open live project</a>` : ""}
+        ${project.live ? `<a class="button button-secondary" href="${project.live}" target="_blank" rel="noopener noreferrer" data-live-project="${project.id}" aria-label="Open ${project.title} live project in a new tab">Open live project</a>` : ""}
       </div>`;
     dialog.showModal();
     document.body.classList.add("dialog-open");

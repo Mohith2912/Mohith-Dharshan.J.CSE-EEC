@@ -80,8 +80,9 @@ const appSource = readFileSync(resolve(root, "js/app.js"), "utf8");
 if (!appSource.includes('data-live-project="${project.id}"')) {
   throw new Error("Live project links are missing their navigation marker");
 }
-if (/href="\$\{project\.live\}"[^>]*target="_blank"/.test(appSource)) {
-  throw new Error("Live project links must navigate in the current tab");
+const newTabLiveLinks = appSource.match(/href="\$\{project\.live\}"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/g) ?? [];
+if (newTabLiveLinks.length !== 2) {
+  throw new Error("Both featured-card and case-study live links must open safely in a new tab");
 }
 
 const duplicateRepos = repositories.filter((repo, index) => repositories.findIndex((item) => item.name === repo.name) !== index);
