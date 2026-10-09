@@ -36,6 +36,27 @@ const { featured, repositories } = context.window.PORTFOLIO_DATA;
 if (featured.length !== 7) throw new Error(`Expected 7 featured projects, found ${featured.length}`);
 if (repositories.length !== 31) throw new Error(`Expected 31 repository records, found ${repositories.length}`);
 
+const expectedLiveProjects = new Map([
+  ["college-ext", "https://beyond-syllabus-learn.vercel.app"],
+  ["voe", "https://voe-web-gilt.vercel.app"],
+  ["urban-furniture", "https://urban-furniture-web.vercel.app"],
+  ["peoplepay360", "https://people-pay360-mu.vercel.app"]
+]);
+
+for (const [id, expectedUrl] of expectedLiveProjects) {
+  const project = featured.find((item) => item.id === id);
+  if (!project) throw new Error(`Missing featured project: ${id}`);
+  if (project.live !== expectedUrl) throw new Error(`Unexpected live URL for ${id}: ${project.live}`);
+}
+
+const appSource = readFileSync(resolve(root, "js/app.js"), "utf8");
+if (!appSource.includes('data-live-project="${project.id}"')) {
+  throw new Error("Live project links are missing their navigation marker");
+}
+if (/href="\$\{project\.live\}"[^>]*target="_blank"/.test(appSource)) {
+  throw new Error("Live project links must navigate in the current tab");
+}
+
 const duplicateRepos = repositories.filter((repo, index) => repositories.findIndex((item) => item.name === repo.name) !== index);
 if (duplicateRepos.length) throw new Error(`Duplicate repository entries: ${duplicateRepos.map((repo) => repo.name).join(", ")}`);
 
