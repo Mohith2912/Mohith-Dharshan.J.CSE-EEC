@@ -12,6 +12,11 @@ const requiredFiles = [
   "assets/mohith-dharshan.jpg",
   "assets/Mohith_Dharshan_Resume.pdf",
   "assets/Mohith_Dharshan_Resume_Original.pdf",
+  "assets/highlights/odoo-finalist.jpg",
+  "assets/highlights/pitchathon-team.jpg",
+  "assets/highlights/unihealth-dashboard.jpg",
+  "assets/highlights/ace-execution-team.jpg",
+  "assets/highlights/extendquality-dashboard.jpg",
   "assets/favicon.svg",
   "site.webmanifest",
   "vercel.json"
@@ -22,8 +27,12 @@ for (const file of requiredFiles) {
 }
 
 const html = readFileSync(resolve(root, "index.html"), "utf8");
-for (const id of ["main", "work", "academics", "repositories", "about", "contact", "project-dialog"]) {
+for (const id of ["main", "work", "academics", "highlights", "repositories", "about", "contact", "project-dialog"]) {
   if (!html.includes(`id="${id}"`)) throw new Error(`Missing required page landmark: ${id}`);
+}
+
+for (const highlight of ["Odoo Hackathon 2026", "Pitchathon 2026", "CMR Hackfest 3.0", "Execution Team member", "Vision to Venture"]) {
+  if (!html.toLowerCase().includes(highlight.toLowerCase())) throw new Error(`Missing verified highlight: ${highlight}`);
 }
 
 for (const score of ["8.53", "9.16", "8.85"]) {
