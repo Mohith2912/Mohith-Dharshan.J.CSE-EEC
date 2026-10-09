@@ -5,6 +5,7 @@ A cinematic, content-first portfolio for Mohith Dharshan J, a Computer Science a
 ## Highlights
 
 - Seven detailed project stories with clear system flows.
+- A dedicated academic chapter with Semester 1, Semester 2, and combined first-year performance.
 - A searchable atlas of all public GitHub repositories.
 - Resume-backed experience, education, skills, and contact information.
 - Responsive, keyboard-friendly, reduced-motion-aware interactions.

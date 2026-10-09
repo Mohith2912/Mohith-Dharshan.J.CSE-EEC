@@ -16,6 +16,8 @@ The site is deliberately static: semantic HTML provides the complete reading ord
 
 The interface takes high-level cues from the supplied KRATOS reference—dark atmosphere, concentrated red accents, bold typography, restrained glow, and cinematic pacing—while using an original layout, identity system, project narrative, and interaction model for Mohith’s work.
 
+The academic chapter takes high-level cues from the supplied Mrithula Vijay reference—generous section rhythm, editorial italic emphasis, compact navigation, and bordered interest cards—then translates them into Mohith’s palette and content. Descriptions remain visible rather than relying on hover.
+
 ## Accessibility and resilience
 
 - Semantic landmarks, heading order, visible labels, keyboard-operable native controls, and descriptive link/button names.

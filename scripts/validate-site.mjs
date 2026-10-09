@@ -20,8 +20,12 @@ for (const file of requiredFiles) {
 }
 
 const html = readFileSync(resolve(root, "index.html"), "utf8");
-for (const id of ["main", "work", "repositories", "about", "contact", "project-dialog"]) {
+for (const id of ["main", "work", "academics", "repositories", "about", "contact", "project-dialog"]) {
   if (!html.includes(`id="${id}"`)) throw new Error(`Missing required page landmark: ${id}`);
+}
+
+for (const score of ["8.53", "9.16", "8.85"]) {
+  if (!html.includes(score)) throw new Error(`Missing academic score: ${score}`);
 }
 
 const context = { window: {} };
