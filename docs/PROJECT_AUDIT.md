@@ -28,7 +28,7 @@ The academic chapter takes high-level cues from the supplied Mrithula Vijay refe
 
 ## Verification
 
-- Automated integrity check: 7 featured case studies, 31 unique repository records, and all required assets.
+- Automated integrity check: 7 featured case studies, 30 unique project repository records, and all required assets. The GitHub profile README is intentionally kept separate.
 - JavaScript syntax checked with Node.js.
 - Desktop viewport reviewed at 1265 × 708.
 - Mobile viewport reviewed at 390 × 844.

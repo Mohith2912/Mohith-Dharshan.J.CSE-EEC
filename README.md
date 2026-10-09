@@ -6,7 +6,8 @@ A cinematic, content-first portfolio for Mohith Dharshan J, a Computer Science a
 
 - Seven detailed project stories with clear system flows.
 - A dedicated academic chapter with Semester 1, Semester 2, and combined first-year performance.
-- A searchable atlas of all public GitHub repositories.
+- A searchable atlas of 30 project repositories; the GitHub profile README remains separate from the project catalog.
+- A polished one-page résumé for quick viewing and download.
 - Resume-backed experience, education, skills, and contact information.
 - Responsive, keyboard-friendly, reduced-motion-aware interactions.
 - Static architecture for fast, reliable Vercel deployment.

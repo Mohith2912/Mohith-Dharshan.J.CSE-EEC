@@ -122,7 +122,6 @@ window.PORTFOLIO_DATA = {
     { name: "QR-Scanner", category: "utility", language: "JavaScript", description: "A lightweight browser QR-scanning utility with a focused camera-to-result interaction." },
     { name: "Unihealth-Pharmacy-Management", category: "healthcare", language: "HTML", description: "A pharmacy operations interface covering inventory, reservations, alerts, analytics, and authentication." },
     { name: "Unihealth-User-App", category: "healthcare", language: "JavaScript", description: "A mobile-oriented healthcare client with booking, checkout, family, emergency, doctor, and hospital flows." },
-    { name: "LogicBreak-Img", category: "design", language: "Assets", description: "A visual identity archive containing final LogicBreak event marks and clean text-only exports." },
-    { name: "Mohith2912", category: "portfolio", language: "Markdown", description: "Mohith’s GitHub profile README: current focus, technology map, featured work, and activity overview." }
+    { name: "LogicBreak-Img", category: "design", language: "Assets", description: "A visual identity archive containing final LogicBreak event marks and clean text-only exports." }
   ]
 };

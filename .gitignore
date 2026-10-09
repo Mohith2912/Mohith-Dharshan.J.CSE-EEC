@@ -2,4 +2,6 @@
 .DS_Store
 Thumbs.db
 node_modules/
+tmp/
+__pycache__/
 

@@ -38,7 +38,11 @@ vm.runInContext(readFileSync(resolve(root, "js/projects.js"), "utf8"), context);
 const { featured, repositories } = context.window.PORTFOLIO_DATA;
 
 if (featured.length !== 7) throw new Error(`Expected 7 featured projects, found ${featured.length}`);
-if (repositories.length !== 31) throw new Error(`Expected 31 repository records, found ${repositories.length}`);
+if (repositories.length !== 30) throw new Error(`Expected 30 project repository records, found ${repositories.length}`);
+
+if (repositories.some((repo) => repo.name === "Mohith2912")) {
+  throw new Error("GitHub profile README must remain separate from the project repository atlas");
+}
 
 const expectedLiveProjects = new Map([
   ["college-ext", "https://beyond-syllabus-learn.vercel.app"],

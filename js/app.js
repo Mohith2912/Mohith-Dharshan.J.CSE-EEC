@@ -73,6 +73,14 @@
     document.body.classList.remove("dialog-open");
   }
 
+  function setMenuOpen(open, restoreFocus = false) {
+    menuButton.setAttribute("aria-expanded", String(open));
+    menuButton.setAttribute("aria-label", open ? "Close navigation menu" : "Open navigation menu");
+    navigation.classList.toggle("is-open", open);
+    document.body.classList.toggle("menu-open", open);
+    if (restoreFocus) menuButton.focus();
+  }
+
   function repoCard(repo) {
     const url = `https://github.com/Mohith2912/${encodeURIComponent(repo.name)}`;
     return `
@@ -165,12 +173,18 @@
 
   menuButton.addEventListener("click", () => {
     const open = menuButton.getAttribute("aria-expanded") === "true";
-    menuButton.setAttribute("aria-expanded", String(!open));
-    navigation.classList.toggle("is-open", !open);
+    setMenuOpen(!open);
   });
   navigation.addEventListener("click", () => {
-    menuButton.setAttribute("aria-expanded", "false");
-    navigation.classList.remove("is-open");
+    setMenuOpen(false);
+  });
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && menuButton.getAttribute("aria-expanded") === "true") {
+      setMenuOpen(false, true);
+    }
+  });
+  window.addEventListener("resize", () => {
+    if (window.innerWidth > 1080) setMenuOpen(false);
   });
 
   let ticking = false;
