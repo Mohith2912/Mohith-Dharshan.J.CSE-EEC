@@ -24,9 +24,9 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
-    <link rel="stylesheet" href="styles.css?v=9" />
+    <link rel="stylesheet" href="styles.css?v=10" />
     <script src="js/projects.js?v=7" defer></script>
-    <script src="js/app.js?v=9" defer></script>
+    <script src="js/app.js?v=10" defer></script>
   </head>
   <body>
     <a class="skip-link" href="#main">Skip to content</a>
@@ -311,8 +311,15 @@
           </label>
           <div class="filter-list" id="repo-filters" aria-label="Filter repositories"></div>
         </div>
-        <p class="repo-count mono" id="repo-count" aria-live="polite"></p>
-        <div class="repo-grid" id="repo-grid"></div>
+        <div class="repo-panel reveal">
+          <div class="repo-panel-heading">
+            <p class="repo-count mono" id="repo-count" aria-live="polite"></p>
+            <p class="repo-scroll-hint" id="repo-scroll-hint">Scroll inside this panel to explore every repository.</p>
+          </div>
+          <div class="repo-scroll" id="repo-scroll" tabindex="0" role="region" aria-label="Scrollable repository list" aria-describedby="repo-scroll-hint">
+            <div class="repo-grid" id="repo-grid"></div>
+          </div>
+        </div>
       </section>
 
       <section class="about section-block" id="about" aria-labelledby="about-title">
@@ -364,6 +371,12 @@
       <div><a href="https://github.com/Mohith2912" target="_blank" rel="noreferrer">GitHub</a><a href="#top">Back to top</a></div>
       <p class="mono">© <span id="year"></span> · CHENNAI / INDIA</p>
     </footer>
+
+    <button class="back-to-top" type="button" aria-label="Back to the top of the website" aria-hidden="true" tabindex="-1">
+      <svg aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8">
+        <path d="M12 20V4M6 10l6-6 6 6"></path>
+      </svg>
+    </button>
 
     <dialog class="project-dialog" id="project-dialog" aria-labelledby="dialog-title">
       <div class="dialog-shell">

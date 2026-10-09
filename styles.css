@@ -348,8 +348,17 @@ html[data-theme="light"] .theme-icon-moon { display: block; }
 .filter-list button { min-height: 44px; padding: .58rem .8rem; border: 1px solid var(--line); border-radius: 0; background: transparent; color: var(--muted); font-size: .72rem; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: border-color 180ms ease, color 180ms ease, background-color 180ms ease; }
 .filter-list button:hover { border-color: var(--line-strong); color: var(--ink); }
 .filter-list button[aria-pressed="true"] { border-color: var(--accent); background: var(--accent); color: #fff; }
-.repo-count { margin: 1.25rem 0; color: var(--dim); font-size: .72rem; text-transform: uppercase; }
-.repo-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+.repo-panel { margin-top: 1.25rem; border: 1px solid var(--line-strong); background: var(--bg-raised); }
+.repo-panel-heading { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; min-height: 58px; padding: .7rem 1rem; border-bottom: 1px solid var(--line); background: var(--panel); }
+.repo-count { margin: 0; color: var(--dim); font-size: .72rem; text-transform: uppercase; }
+.repo-scroll-hint { margin: 0; color: var(--muted); font-size: .76rem; text-align: right; }
+.repo-scroll { position: relative; max-height: min(72vh, 760px); overflow-y: auto; overscroll-behavior: contain; scrollbar-gutter: stable; scroll-behavior: smooth; }
+.repo-scroll:focus-visible { outline: 2px solid var(--accent-bright); outline-offset: -4px; }
+.repo-scroll::-webkit-scrollbar { width: 11px; }
+.repo-scroll::-webkit-scrollbar-track { background: var(--panel); }
+.repo-scroll::-webkit-scrollbar-thumb { border: 3px solid var(--panel); border-radius: 999px; background: var(--line-strong); }
+.repo-scroll::-webkit-scrollbar-thumb:hover { background: var(--accent-bright); }
+.repo-grid { display: grid; grid-template-columns: repeat(3, 1fr); border-left: 1px solid var(--line); }
 .repo-card { display: flex; flex-direction: column; min-height: 290px; padding: 1.35rem; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: rgba(255,255,255,.012); transition: background-color 180ms ease; }
 .repo-card:hover { background: rgba(255,255,255,.035); }
 .repo-card-meta { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 2rem; color: var(--dim); font-size: .67rem; text-transform: uppercase; letter-spacing: .06em; }
@@ -387,6 +396,10 @@ html[data-theme="light"] .theme-icon-moon { display: block; }
 .site-footer > div { display: flex; gap: 1.2rem; }
 .site-footer a { display: inline-flex; align-items: center; min-height: 44px; color: var(--muted); }
 .site-footer a:hover { color: var(--ink); }
+
+.back-to-top { position: fixed; z-index: 45; right: clamp(1rem, 2.4vw, 2.25rem); bottom: clamp(1rem, 2.4vw, 2.25rem); display: grid; place-items: center; width: 48px; height: 48px; padding: 0; border: 1px solid var(--line-strong); background: var(--bg-raised); color: var(--ink); box-shadow: 0 14px 40px rgba(0,0,0,.32); opacity: 0; visibility: hidden; transform: translateY(10px); pointer-events: none; cursor: pointer; transition: opacity 180ms ease, visibility 180ms ease, transform 180ms var(--ease), border-color 180ms ease, background-color 180ms ease; }
+.back-to-top:hover { border-color: var(--accent-bright); background: var(--accent); color: #fff; }
+.back-to-top.is-visible { opacity: 1; visibility: visible; transform: translateY(0); pointer-events: auto; }
 
 .project-dialog { width: min(1040px, calc(100% - 2rem)); max-height: calc(100dvh - 2rem); padding: 0; border: 1px solid var(--line-strong); border-radius: 0; background: var(--bg-raised); color: var(--ink); box-shadow: 0 40px 120px rgba(0,0,0,.75); }
 .project-dialog::backdrop { background: rgba(3,2,3,.82); backdrop-filter: blur(10px); }
@@ -433,6 +446,9 @@ html[data-theme="light"] .project-card-cyan { --card-accent: #08788a; }
 html[data-theme="light"] .project-card-orange { --card-accent: #b24e12; }
 html[data-theme="light"] .repo-card { background: rgba(33,26,30,.012); }
 html[data-theme="light"] .repo-card:hover { background: rgba(33,26,30,.045); }
+html[data-theme="light"] .repo-panel { background: rgba(255,255,255,.5); }
+html[data-theme="light"] .repo-panel-heading { background: var(--panel); }
+html[data-theme="light"] .back-to-top { box-shadow: 0 14px 40px rgba(55,31,40,.18); }
 html[data-theme="light"] .highlight-feature,
 html[data-theme="light"] .highlight-card { background: rgba(255,255,255,.46); }
 html[data-theme="light"] .venture-highlight { background: linear-gradient(135deg, rgba(213,47,62,.09), rgba(255,255,255,.54)); }
@@ -518,6 +534,7 @@ html[data-theme="light"] .project-dialog { box-shadow: 0 40px 120px rgba(55,31,4
   .section-heading, .system-story-inner, .about-grid, .academic-heading { grid-template-columns: 1fr; gap: 2rem; }
   .section-heading > p { margin-top: 0; }
   .repo-toolbar { grid-template-columns: 1fr; }
+  .repo-scroll { max-height: min(68vh, 680px); }
   .filter-list { flex-wrap: nowrap; justify-content: flex-start; overflow-x: auto; overscroll-behavior-inline: contain; padding-bottom: .55rem; scrollbar-width: thin; }
   .filter-list button { flex: 0 0 auto; min-height: 46px; }
   .capability-board { grid-template-columns: repeat(2, 1fr); }
@@ -555,6 +572,9 @@ html[data-theme="light"] .project-dialog { box-shadow: 0 40px 120px rgba(55,31,4
   .project-card-footer > a, .project-card-footer > button { flex: 1; justify-content: center; min-height: 48px; padding-inline: .7rem; border: 1px solid var(--line); text-align: center; }
   .repo-card { min-height: 250px; }
   .repo-grid { grid-template-columns: 1fr; }
+  .repo-panel-heading { align-items: flex-start; flex-direction: column; gap: .25rem; padding-block: .8rem; }
+  .repo-scroll-hint { text-align: left; }
+  .back-to-top { right: 1rem; bottom: max(1rem, env(safe-area-inset-bottom)); }
   .capability-board { grid-template-columns: 1fr; }
   .interest-grid { grid-template-columns: 1fr; }
   .timeline article { grid-template-columns: 1fr; gap: .55rem; }

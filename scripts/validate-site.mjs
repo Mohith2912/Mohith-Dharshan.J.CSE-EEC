@@ -47,6 +47,13 @@ if (!html.includes('class="theme-toggle"') || !html.includes('mohith-portfolio-t
   throw new Error("Responsive light/dark theme controls are missing");
 }
 
+if (!html.includes('class="repo-scroll"') || !html.includes('aria-label="Scrollable repository list"')) {
+  throw new Error("Accessible fixed-height repository scrolling is missing");
+}
+if (!html.includes('class="back-to-top"') || !html.includes('aria-label="Back to the top of the website"')) {
+  throw new Error("Accessible back-to-top control is missing");
+}
+
 for (const resume of ["Mohith_Dharshan_Resume_Original.pdf", "Mohith_Dharshan_Resume.pdf"]) {
   const resumeHref = `assets/${resume}`;
   if (!html.includes(`href="${resumeHref}" target="_blank"`)) {
@@ -95,6 +102,9 @@ if (!appSource.includes('systemTheme.addEventListener("change"') || !appSource.i
 }
 if (!appSource.includes('data-live-project="${project.id}"')) {
   throw new Error("Live project links are missing their navigation marker");
+}
+if (!appSource.includes('backToTop.addEventListener("click"') || !appSource.includes("updateBackToTop()")) {
+  throw new Error("Back-to-top behavior is missing");
 }
 const newTabLiveLinks = appSource.match(/href="\$\{project\.live\}"[^>]*target="_blank"[^>]*rel="noopener noreferrer"/g) ?? [];
 if (newTabLiveLinks.length !== 2) {

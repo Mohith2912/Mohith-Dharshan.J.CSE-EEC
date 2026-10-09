@@ -13,6 +13,8 @@
   const navigation = document.querySelector("#primary-navigation");
   const themeToggle = document.querySelector(".theme-toggle");
   const themeToggleLabel = themeToggle.querySelector(".theme-toggle-label");
+  const backToTop = document.querySelector(".back-to-top");
+  const brandLink = document.querySelector(".brand");
   const themeColor = document.querySelector('meta[name="theme-color"]');
   const systemTheme = window.matchMedia("(prefers-color-scheme: light)");
   let activeCategory = "all";
@@ -158,6 +160,13 @@
     document.querySelector("#page-progress-bar").style.width = `${Math.min(progress, 100)}%`;
   }
 
+  function updateBackToTop() {
+    const visible = window.scrollY > Math.max(520, window.innerHeight * 0.75);
+    backToTop.classList.toggle("is-visible", visible);
+    backToTop.setAttribute("aria-hidden", String(!visible));
+    backToTop.tabIndex = visible ? 0 : -1;
+  }
+
   function updateActiveNavigation() {
     const sections = [...document.querySelectorAll("main section[id]")];
     let current = "";
@@ -197,6 +206,11 @@
     renderRepositories();
   });
   search.addEventListener("input", renderRepositories);
+  backToTop.addEventListener("click", () => {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    window.scrollTo({ top: 0, behavior: reduceMotion ? "auto" : "smooth" });
+    window.setTimeout(() => brandLink.focus({ preventScroll: true }), reduceMotion ? 0 : 520);
+  });
   dialog.querySelector(".dialog-close").addEventListener("click", closeDialog);
   dialog.addEventListener("click", (event) => { if (event.target === dialog) closeDialog(); });
   dialog.addEventListener("close", () => document.body.classList.remove("dialog-open"));
@@ -223,10 +237,12 @@
     requestAnimationFrame(() => {
       updatePageProgress();
       updateActiveNavigation();
+      updateBackToTop();
       ticking = false;
     });
     ticking = true;
   }, { passive: true });
   updatePageProgress();
   updateActiveNavigation();
+  updateBackToTop();
 })();
