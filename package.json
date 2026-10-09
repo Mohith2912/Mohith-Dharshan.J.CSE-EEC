@@ -1,0 +1,11 @@
+{
+  "name": "mohith-dharshan-portfolio",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "check": "node scripts/validate-site.mjs",
+    "serve": "npx --yes serve . -l 4173"
+  }
+}
+
