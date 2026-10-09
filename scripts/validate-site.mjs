@@ -1,5 +1,6 @@
 import { existsSync, readFileSync } from "node:fs";
 import { resolve } from "node:path";
+import { createHash } from "node:crypto";
 import vm from "node:vm";
 
 const root = resolve(import.meta.dirname, "..");
@@ -10,6 +11,7 @@ const requiredFiles = [
   "js/projects.js",
   "assets/mohith-dharshan.jpg",
   "assets/Mohith_Dharshan_Resume.pdf",
+  "assets/Mohith_Dharshan_Resume_Original.pdf",
   "assets/favicon.svg",
   "site.webmanifest",
   "vercel.json"
@@ -30,6 +32,23 @@ for (const score of ["8.53", "9.16", "8.85"]) {
 
 if (!html.includes('href="tel:+917845122655"')) {
   throw new Error("Missing clickable contact phone number");
+}
+
+for (const resume of ["Mohith_Dharshan_Resume_Original.pdf", "Mohith_Dharshan_Resume.pdf"]) {
+  const resumeHref = `assets/${resume}`;
+  if (!html.includes(`href="${resumeHref}" target="_blank"`)) {
+    throw new Error(`Missing view action for ${resume}`);
+  }
+  if (!html.includes(`href="${resumeHref}" download=`)) {
+    throw new Error(`Missing download action for ${resume}`);
+  }
+}
+
+const originalResumeHash = createHash("sha256")
+  .update(readFileSync(resolve(root, "assets/Mohith_Dharshan_Resume_Original.pdf")))
+  .digest("hex");
+if (originalResumeHash !== "c0bb40e7dc392bcf0a99311f9e36ca733c48040f4af5f4f218266facd85e6288") {
+  throw new Error("The original attached résumé PDF was modified");
 }
 
 const context = { window: {} };

@@ -33,7 +33,7 @@ The academic chapter takes high-level cues from the supplied Mrithula Vijay refe
 - Desktop viewport reviewed at 1265 × 708.
 - Mobile viewport reviewed at 390 × 844.
 - Mobile navigation, project dialog, and repository search exercised in the browser.
-- Resume source and committed PDF blob hashes match exactly.
+- The exact attached two-page résumé is preserved byte-for-byte as a separate asset, alongside the generated one-page edition.
 
 ## Deployment
 
