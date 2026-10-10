@@ -12,6 +12,11 @@ A cinematic, content-first portfolio for Mohith Dharshan J, a Computer Science a
 - Responsive, keyboard-friendly, reduced-motion-aware interactions.
 - Adaptive light and dark themes that follow the system and remember a visitor's choice.
 - Static architecture for fast, reliable Vercel deployment.
+- Search-ready metadata, person/profile structured data, crawler rules, and an XML sitemap for the canonical portfolio URL.
+
+## Live portfolio
+
+[mohith-dharshan-j-cse-eec.vercel.app](https://mohith-dharshan-j-cse-eec.vercel.app/)
 
 ## Local preview
 

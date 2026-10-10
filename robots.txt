@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://mohith-dharshan-j-cse-eec.vercel.app/sitemap.xml

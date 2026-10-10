@@ -18,6 +18,8 @@ const requiredFiles = [
   "assets/highlights/ace-execution-team.jpg",
   "assets/highlights/extendquality-dashboard.jpg",
   "assets/favicon.svg",
+  "robots.txt",
+  "sitemap.xml",
   "site.webmanifest",
   "vercel.json"
 ];
@@ -27,6 +29,27 @@ for (const file of requiredFiles) {
 }
 
 const html = readFileSync(resolve(root, "index.html"), "utf8");
+const siteUrl = "https://mohith-dharshan-j-cse-eec.vercel.app/";
+
+for (const seoSignal of [
+  `<link rel="canonical" href="${siteUrl}"`,
+  `<meta property="og:url" content="${siteUrl}"`,
+  'type="application/ld+json"',
+  '"alternateName": "Mohith Dharshan"',
+  '"@type": "ProfilePage"'
+]) {
+  if (!html.includes(seoSignal)) throw new Error(`Missing SEO signal: ${seoSignal}`);
+}
+
+const robots = readFileSync(resolve(root, "robots.txt"), "utf8");
+if (!robots.includes(`Sitemap: ${siteUrl}sitemap.xml`)) {
+  throw new Error("robots.txt does not advertise the canonical sitemap");
+}
+
+const sitemap = readFileSync(resolve(root, "sitemap.xml"), "utf8");
+if (!sitemap.includes(`<loc>${siteUrl}</loc>`)) {
+  throw new Error("sitemap.xml does not contain the canonical portfolio URL");
+}
 for (const id of ["main", "work", "academics", "highlights", "repositories", "about", "contact", "project-dialog"]) {
   if (!html.includes(`id="${id}"`)) throw new Error(`Missing required page landmark: ${id}`);
 }
