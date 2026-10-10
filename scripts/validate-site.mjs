@@ -36,6 +36,7 @@ for (const seoSignal of [
   `<meta property="og:url" content="${siteUrl}"`,
   '<meta name="google-site-verification" content="B1vrEx-tC8__P3UqJXEx9usX6kOC0nRRVg9Y_mPchRY"',
   '<meta name="google-site-verification" content="1wOwWMGb11pSV5VvJvB2BC2x-yhjbnpLuXXy0Se8NE4"',
+  '<meta name="msvalidate.01" content="BFDD076C3594E75D59FA93513F3E4862"',
   'type="application/ld+json"',
   '"alternateName": "Mohith Dharshan"',
   '"@type": "ProfilePage"'
