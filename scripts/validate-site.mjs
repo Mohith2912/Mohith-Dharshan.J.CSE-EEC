@@ -34,6 +34,7 @@ const siteUrl = "https://mohith-dharshan-j-cse-eec.vercel.app/";
 for (const seoSignal of [
   `<link rel="canonical" href="${siteUrl}"`,
   `<meta property="og:url" content="${siteUrl}"`,
+  '<meta name="google-site-verification" content="B1vrEx-tC8__P3UqJXEx9usX6kOC0nRRVg9Y_mPchRY"',
   'type="application/ld+json"',
   '"alternateName": "Mohith Dharshan"',
   '"@type": "ProfilePage"'
