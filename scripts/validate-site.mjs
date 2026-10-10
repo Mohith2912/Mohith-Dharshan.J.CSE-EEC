@@ -10,6 +10,7 @@ const requiredFiles = [
   "js/app.js",
   "js/projects.js",
   "assets/mohith-dharshan.jpg",
+  "assets/mohith-dharshan-footer.webp",
   "assets/Mohith_Dharshan_Resume.pdf",
   "assets/Mohith_Dharshan_Resume_Original.pdf",
   "assets/highlights/odoo-finalist.jpg",
