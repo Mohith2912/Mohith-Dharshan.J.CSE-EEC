@@ -90,8 +90,8 @@ for (const resume of ["Mohith_Dharshan_Resume_Original.pdf", "Mohith_Dharshan_Re
 const originalResumeHash = createHash("sha256")
   .update(readFileSync(resolve(root, "assets/Mohith_Dharshan_Resume_Original.pdf")))
   .digest("hex");
-if (originalResumeHash !== "c0bb40e7dc392bcf0a99311f9e36ca733c48040f4af5f4f218266facd85e6288") {
-  throw new Error("The original attached résumé PDF was modified");
+if (originalResumeHash !== "07b9f1d00bf50c336677dd1ed1c2400644ddf4c9ff49f55f51c9fd9283993a99") {
+  throw new Error("The sanitized original résumé PDF was modified");
 }
 
 const context = { window: {} };

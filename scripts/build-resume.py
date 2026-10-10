@@ -42,9 +42,9 @@ class OnePageResume(BaseDocTemplate):
             rightMargin=MARGIN,
             topMargin=MARGIN,
             bottomMargin=MARGIN,
-            title="Mohith Dharshan J - One Page Resume",
-            author="Mohith Dharshan J",
-            subject="Software, AI, and Full-stack Development Resume",
+            title="",
+            author="",
+            subject="",
         )
         frame = Frame(MARGIN, MARGIN, PAGE_W - 2 * MARGIN, PAGE_H - 2 * MARGIN, id="resume")
         self.addPageTemplates(PageTemplate(id="one-page", frames=[frame], onPage=self._decorate))
@@ -198,9 +198,12 @@ def skill(label, value):
 
 
 pdf = canvas.Canvas(str(FINAL_PDF), pagesize=A4)
-pdf.setTitle("Mohith Dharshan J - One Page Resume")
-pdf.setAuthor("Mohith Dharshan J")
-pdf.setSubject("Software, AI, and Full-stack Development Resume")
+pdf.setTitle("")
+pdf.setAuthor("")
+pdf.setSubject("")
+pdf.setCreator("")
+pdf._doc.info.producer = ""
+pdf._doc.info.keywords = ""
 pdf.setFillColor(PAPER)
 pdf.rect(0, 0, PAGE_W, PAGE_H, fill=1, stroke=0)
 pdf.setFillColor(ACCENT)
